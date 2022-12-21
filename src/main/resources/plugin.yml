@@ -1,3 +1,8 @@
 main: me.jantesch.christmasplugin.ChristmasPlugin
 version: 1.0.0
 name: ChristmasPlugin
+api-version: 1.19
+
+commands:
+  christmas:
+    description: hello

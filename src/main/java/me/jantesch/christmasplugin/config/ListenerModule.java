@@ -11,7 +11,7 @@ import org.bukkit.event.Listener;
 public class ListenerModule extends AbstractModule {
 
     public void configure() {
-        Multibinder<Listener> listenerBinder = Multibinder.newSetBinder(binder(), Listener.class);
+        var listenerBinder = Multibinder.newSetBinder(binder(), Listener.class);
 
         listenerBinder.addBinding().to(LoginListener.class);
         listenerBinder.addBinding().to(CraftingListener.class);
