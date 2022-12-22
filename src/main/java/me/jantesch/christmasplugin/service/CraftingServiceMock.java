@@ -1,7 +1,6 @@
 package me.jantesch.christmasplugin.service;
 
 import com.google.inject.Singleton;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 

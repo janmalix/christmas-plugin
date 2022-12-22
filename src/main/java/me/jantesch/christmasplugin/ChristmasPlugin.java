@@ -5,23 +5,26 @@ import com.google.inject.Injector;
 import me.jantesch.christmasplugin.commands.CommandService;
 import me.jantesch.christmasplugin.config.CommandModule;
 import me.jantesch.christmasplugin.config.ListenerModule;
+import me.jantesch.christmasplugin.config.PluginModule;
 import me.jantesch.christmasplugin.config.ServiceModule;
 import me.jantesch.christmasplugin.listener.ListenerService;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.logging.Level;
+
 public class ChristmasPlugin extends JavaPlugin {
 
-    private final Injector injector;
-
-    public ChristmasPlugin() {
-        injector = initInjector();
-    }
+    private Injector injector;
 
     @Override
     public void onEnable() {
         super.onEnable();
+        Bukkit.getLogger().setLevel(Level.ALL);
         Bukkit.getLogger().info("ChristmasPlugin started");
+
+        saveDefaultConfig();
+        injector = initInjector();
 
         var listenerService = injector.getInstance(ListenerService.class);
         var commandService = injector.getInstance(CommandService.class);
@@ -41,7 +44,8 @@ public class ChristmasPlugin extends JavaPlugin {
         return Guice.createInjector(
                 new ListenerModule(),
                 new CommandModule(),
-                new ServiceModule()
+                new ServiceModule(),
+                new PluginModule(this)
         );
     }
 }
