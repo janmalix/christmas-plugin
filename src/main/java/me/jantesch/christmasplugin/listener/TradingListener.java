@@ -28,6 +28,7 @@ public class TradingListener implements Listener {
         if (event.getRightClicked() instanceof Villager villager) {
             var recipes = villager.getRecipes();
 
+
             villager.setRecipes(turnIntoRecipeNotExtractable(recipes));
         }
     }

@@ -31,20 +31,20 @@ public class ClickListener implements Listener {
         var item = event.getItem();
 
         if (item != null && isRightClickAction(event.getAction()) && isRecipe(item)) {
-                var material = Material.valueOf(nbtService.getStringTag(item, CraftingService.RECIPE_FOR_TAG));
-                var player = event.getPlayer();
+            var material = Material.valueOf(nbtService.getStringTag(item, CraftingService.RECIPE_FOR_TAG));
+            var player = event.getPlayer();
 
-                if (!craftingService.isAuthorizedFor(player, material)) {
-                    craftingService.authorize(player, material);
+            if (!craftingService.isAuthorizedFor(player, material)) {
+                craftingService.authorize(player, material);
 
-                    removeClickedItem(player, event.getHand());
+                removeClickedItem(player, event.getHand());
 
-                    player.sendMessage(ChatColor.GRAY + "You can now craft: " + ChatColor.GREEN + material);
-                } else {
-                    player.sendMessage(ChatColor.RED + "You have already learned this recipe");
-                }
+                player.sendMessage(ChatColor.GRAY + "You can now craft: " + ChatColor.GREEN + material);
+            } else {
+                player.sendMessage(ChatColor.RED + "You have already learned this recipe");
+            }
 
-                event.setCancelled(true);
+            event.setCancelled(true);
         }
     }
 
@@ -53,7 +53,7 @@ public class ClickListener implements Listener {
     }
 
     private boolean isRecipe(ItemStack stack) {
-        return stack.getType() == Material.MAP && nbtService.hasTag(stack, CraftingService.RECIPE_FOR_TAG);
+        return stack.getType() == CraftingService.RECIPE_MATERIAL && nbtService.hasTag(stack, CraftingService.RECIPE_FOR_TAG);
     }
 
     private void removeClickedItem(Player player, @Nullable EquipmentSlot hand) {

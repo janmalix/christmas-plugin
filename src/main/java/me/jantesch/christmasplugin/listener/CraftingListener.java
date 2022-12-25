@@ -49,7 +49,7 @@ public class CraftingListener implements Listener {
         var item = extractSingleItem(items);
 
         if (item != null && craftingService.isRestricted(item.getType()) && !nbtService.hasTag(item, CraftingService.NO_RECIPE_TAG)) {
-            var map = new ItemStack(Material.MAP);
+            var map = new ItemStack(CraftingService.RECIPE_MATERIAL);
 
             nbtService.setStringTag(map, CraftingService.RECIPE_FOR_TAG, item.getType().toString());
 

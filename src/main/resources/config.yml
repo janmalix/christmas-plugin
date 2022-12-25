@@ -1,34 +1,23 @@
 {
-  "restrictedMaterials": [
-    "DIAMOND_AXE",
-    "DIAMOND_BOOTS",
-    "DIAMOND_CHESTPLATE",
-    "DIAMOND_HELMET",
-    "DIAMOND_HOE",
-    "DIAMOND_LEGGINGS",
-    "DIAMOND_PICKAXE",
-    "DIAMOND_SHOVEL",
-    "DIAMOND_SWORD",
+  "restricted": {
+             "DIAMOND_AXE": {"villagerRestricted": true},
+             "DIAMOND_BOOTS": {"villagerRestricted": true},
+             "DIAMOND_CHESTPLATE": {"villagerRestricted": true},
+             "DIAMOND_HELMET": {"villagerRestricted": true},
+             "DIAMOND_HOE": {"villagerRestricted": true},
+             "DIAMOND_LEGGINGS": {"villagerRestricted": true},
+             "DIAMOND_PICKAXE": {"villagerRestricted": true},
+             "DIAMOND_SHOVEL": {"villagerRestricted": true},
+             "DIAMOND_SWORD": {"villagerRestricted": true},
 
-    "IRON_AXE",
-    "IRON_BOOTS",
-    "IRON_CHESTPLATE",
-    "IRON_HELMET",
-    "IRON_HOE",
-    "IRON_LEGGINGS",
-    "IRON_PICKAXE",
-    "IRON_SHOVEL",
-    "IRON_SWORD"
-  ],
-  "villagerRestricted": [
-    "DIAMOND_AXE",
-    "DIAMOND_BOOTS",
-    "DIAMOND_CHESTPLATE",
-    "DIAMOND_HELMET",
-    "DIAMOND_HOE",
-    "DIAMOND_LEGGINGS",
-    "DIAMOND_PICKAXE",
-    "DIAMOND_SHOVEL",
-    "DIAMOND_SWORD"
-  ]
+             "IRON_AXE": {},
+             "IRON_BOOTS": {},
+             "IRON_CHESTPLATE": {},
+             "IRON_HELMET": {},
+             "IRON_HOE": {},
+             "IRON_LEGGINGS": {},
+             "IRON_PICKAXE": {},
+             "IRON_SHOVEL": {},
+             "IRON_SWORD": {}
+  }
 }
