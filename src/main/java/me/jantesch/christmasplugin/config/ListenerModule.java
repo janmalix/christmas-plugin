@@ -2,10 +2,7 @@ package me.jantesch.christmasplugin.config;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.multibindings.Multibinder;
-import me.jantesch.christmasplugin.listener.CraftingListener;
-import me.jantesch.christmasplugin.listener.ListenerService;
-import me.jantesch.christmasplugin.listener.ListenerServiceImplementation;
-import me.jantesch.christmasplugin.listener.LoginListener;
+import me.jantesch.christmasplugin.listener.*;
 import org.bukkit.event.Listener;
 
 public class ListenerModule extends AbstractModule {
@@ -15,6 +12,8 @@ public class ListenerModule extends AbstractModule {
 
         listenerBinder.addBinding().to(LoginListener.class);
         listenerBinder.addBinding().to(CraftingListener.class);
+        listenerBinder.addBinding().to(ClickListener.class);
+        listenerBinder.addBinding().to(TradingListener.class);
 
         bind(ListenerService.class).to(ListenerServiceImplementation.class);
     }

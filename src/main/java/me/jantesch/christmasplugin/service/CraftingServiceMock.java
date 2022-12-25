@@ -52,4 +52,13 @@ public class CraftingServiceMock implements CraftingService {
         }
     }
 
+    @Override
+    public boolean isRestricted(Material material) {
+        return false;
+    }
+
+    @Override
+    public boolean isVillagerRestricted(Material material) {
+        return false;
+    }
 }

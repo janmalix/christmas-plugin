@@ -5,6 +5,7 @@ import com.google.inject.Singleton;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
@@ -16,6 +17,7 @@ public class CraftingServiceImplementation implements CraftingService {
     private final JavaPlugin plugin;
 
     private final Set<Material> restrictedMaterials;
+    private final Set<Material> villagerRestricted;
     private final Map<UUID, Set<Material>> authorizedPlayers;
 
     @Inject
@@ -36,6 +38,22 @@ public class CraftingServiceImplementation implements CraftingService {
         }
 
         restrictedMaterials = restrictedFromConfig;
+
+        Set<Material> villagerFromConfig;
+        var villagerRes = plugin.getConfig().getStringList("villagerRestricted");
+
+        try {
+            villagerFromConfig = villagerRes.stream()
+                    .map(Material::valueOf)
+                    .collect(Collectors.toSet());
+            Bukkit.getLogger().info("All villager restricted Materials: " + villagerFromConfig);
+        } catch (Exception e) {
+            villagerFromConfig = Set.of();
+            Bukkit.getLogger().warning("The Materials-List is malformed");
+        }
+
+        villagerRestricted = villagerFromConfig;
+
         authorizedPlayers = Collections.synchronizedMap(new HashMap<>());
 
         var authorizedSection = plugin.getConfig().getConfigurationSection("players");
@@ -89,4 +107,13 @@ public class CraftingServiceImplementation implements CraftingService {
         }
     }
 
+    @Override
+    public boolean isRestricted(Material material) {
+        return restrictedMaterials.contains(material);
+    }
+
+    @Override
+    public boolean isVillagerRestricted(Material material) {
+        return villagerRestricted.contains(material);
+    }
 }
